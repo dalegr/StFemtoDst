@@ -1,0 +1,25 @@
+CXX=@CXX@
+
+CXXFLAGS = @CXXFLAGS@ $(shell root-config --auxcflags)
+CPPFLAGS = @CPPFLAGS@ -I$(shell root-config --incdir) -D_VANILLA_ROOT_
+LIBS = $(shell root-config --libs)
+
+VPATH = @srcdir@
+abs_top_builddir = @abs_top_builddir@
+
+STFEMTO = libStFemto.so
+SOURCES_CXX = $(shell find $(VPATH) -name "*.cxx" -printf "%f\n")
+
+all: $(STFEMTO)
+
+$(STFEMTO): $(SOURCES_CXX:.cxx=.o) StFemtoDict.cxx
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -fPIC -shared $^ -o $(STFEMTO) $(LIBS)
+
+%.o: %.cxx
+	$(CXX) -fPIC $(CPPFLAGS) $(CXXFLAGS) -c -o $(abs_top_builddir)/$@ $<
+
+StFemtoDict.cxx: $(shell find $(VPATH) -name "*.h" ! -name "*LinkDef*" -printf "%f\n")
+	rootcint -f $(abs_top_builddir)/$@ -c $(CPPFLAGS) -D__ROOT__ -p $^ $(VPATH)/StFemtoDstLinkDef.h
+
+clean:
+	rm -vf *.o StFemtoDict.* $(STFEMTO)
