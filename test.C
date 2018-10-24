@@ -1,12 +1,6 @@
-R__LOAD_LIBRARY(../StHbtMaker/libStHbtMaker.so)
-R__LOAD_LIBRARY(../StFemtoDst/libStFemto.so)
+R__LOAD_LIBRARY(libStHbtMaker.so)
+R__LOAD_LIBRARY(libStFemto.so)
 
-#include "../StFemtoDst/StHbtFemtoDstReader.h"
-#include "../StHbtMaker/StHbtMaker.h"
-#include "../StHbtMaker/StHbtCorrFctn3DLCMSSym.h"
-#include "../StHbtMaker/StHbtBasicEventCut.h"
-#include "../StHbtMaker/StHbtBasicTrackCut.h"
-#include "../StHbtMaker/StHbtVertexMultAnalysis.h"
 #include <iostream>
 
 using namespace std;
