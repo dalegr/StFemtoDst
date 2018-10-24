@@ -32,7 +32,7 @@ void test(const char *inFile = "CuAu200_test.FemtoDst.root", const char *outFile
         StHbtVertexMultAnalysis *analysis = new StHbtVertexMultAnalysis(/* using default options (see
                                                                            corresponding .h file) */);
 	OUTERR(analysis, __LINE__);
-	unsigned int why_the_hell_do_you_want_the_constant_lvalue_there_dammit_We_cant_use_rvalue_there = 1e3;
+	unsigned int why_the_hell_do_you_want_the_constant_lvalue_there_dammit_We_cant_use_rvalue_there = 2;
 	analysis->setMinSizePartCollection(why_the_hell_do_you_want_the_constant_lvalue_there_dammit_We_cant_use_rvalue_there);
 	analysis->setNumEventsToMix(4);
 
