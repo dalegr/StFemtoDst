@@ -41,11 +41,9 @@ void test(const char *inFile = "CuAu200_test.FemtoDst.root", const char *outFile
 	StHbtBasicTrackCut *trackCut = new StHbtBasicTrackCut();
 	StHbtBasicPairCut  *pairCut  = new StHbtBasicPairCut();
 
-	// Add cuts to the analysis
-	analysis->setEventCut(eventCut);
-	analysis->setFirstParticleCut(trackCut);
-	analysis->setSecondParticleCut(trackCut);
-	analysis->setPairCut(pairCut);
+	// Add value to the event
+	eventCut->setCheckBadRun(false);
+	eventCut->setSphericity(-200., 200.);
 
 	// Add value to tha track
 	trackCut->setMass(pionMass);
@@ -53,6 +51,12 @@ void test(const char *inFile = "CuAu200_test.FemtoDst.root", const char *outFile
 	trackCut->setNSigmaPion(mSigmaPion[0], mSigmaPion[1]);
 	trackCut->setNSigmaOther(mSigmaExclude[0], mSigmaExclude[1]);
 	trackCut->setTnTNSigmaPion(mSigmaPion[0], mSigmaPion[1]);
+
+	// Add cuts to the analysis
+	analysis->setEventCut(eventCut);
+	analysis->setFirstParticleCut(trackCut);
+	analysis->setSecondParticleCut(trackCut);
+	analysis->setPairCut(pairCut);
 
 	// Create corr function
 	StHbtCorrFctn3DLCMSSym *cf = new StHbtCorrFctn3DLCMSSym("cf", 40 /* qinv bins */, 0.2 /* qinv high */);
