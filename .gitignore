@@ -1,0 +1,4 @@
+*.o
+*.so
+StFemtoDict.cxx
+StFemtoDict_rdict.pcm

@@ -270,8 +270,8 @@ StHbtEvent *StHbtFemtoDstReader::Read() {
 
                 mHbtTrack->setDca(mFemtoTrack->GetDCAxGlobal(),
                                   mFemtoTrack->GetDCAyGlobal(),
-                                  mFemtoTrack->GetDCAzGlobal());
-
+								  mFemtoTrack->GetDCAzGlobal());
+				mHbtTrack->setMagneticField( mMagField );
                 //Primary track information
                 TVector3 mPrimMomentum( mFemtoTrack->GetPx(),
                                              mFemtoTrack->GetPy(),
