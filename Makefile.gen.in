@@ -2,7 +2,7 @@ CXX=@CXX@
 
 CXXFLAGS = @CXXFLAGS@ $(shell root-config --auxcflags)
 CPPFLAGS = @CPPFLAGS@ -I$(shell root-config --incdir) -D_VANILLA_ROOT_
-LIBS = $(shell root-config --libs)
+LIBS = $(shell root-config --libs) -lEG
 
 VPATH = @srcdir@
 abs_top_builddir = @abs_top_builddir@
